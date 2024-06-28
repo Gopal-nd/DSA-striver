@@ -8,10 +8,10 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Gopal/Desktop/DSA striver",
-      "program": "c:/Users/Gopal/Desktop/DSA striver/build/Debug/outDebug",
+      "cwd": "c:/Users/Gopal/Desktop/DSA striver/test1",
+      "program": "c:/Users/Gopal/Desktop/DSA striver/test1/build/Debug/outDebug",
       "MIMode": "gdb",
-      "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+      "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
