@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Gopal/Desktop/DSA striver/test1",
-      "program": "c:/Users/Gopal/Desktop/DSA striver/test1/build/Debug/outDebug",
+      "cwd": "c:/Users/Gopal/Desktop/DSA striver/recursion",
+      "program": "c:/Users/Gopal/Desktop/DSA striver/recursion/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
       "setupCommands": [
