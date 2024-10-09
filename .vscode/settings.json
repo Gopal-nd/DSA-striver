@@ -62,7 +62,8 @@
     "*.ejs": "html",
     "*.jsx": "javascriptreact",
     "iostream": "cpp",
-    "chrono": "cpp"
+    "chrono": "cpp",
+    "ostream": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

@@ -55,3 +55,32 @@ int main(){
 
 
 #### Indexing the solutions with page numbers
+---
+
+### cpp vs code snippet set up
+
+`settings -> snippets -> cpp.json`
+
+```json
+
+"Basic cpp started code": {
+    "prefix": "cpp",
+    "body": [
+        "#include <bits/stdc++.h>",
+        "using namespace std;",
+        "",
+        "int main() {",
+        "\t$0", 
+        "",
+        "  return 0;",
+        "}",
+        ""
+    ],
+    "description": "basic cpp starter code"
+}
+
+
+```
+type ***cpp*** to run this code 
+
+---
