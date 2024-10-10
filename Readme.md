@@ -40,6 +40,8 @@ int main(){
 
 [Github](https://github.com/gopal-nd)
 
+[code360-codingninja](https://www.naukri.com/code360/home)
+
 ---
 ### key thing to remember
 
