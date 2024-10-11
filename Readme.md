@@ -42,6 +42,8 @@ int main(){
 
 [code360-codingninja](https://www.naukri.com/code360/home)
 
+[GeeksforGeeks](https://www.geeksforgeeks.org/user/docod3ywy/)
+
 ---
 ### key thing to remember
 
