@@ -45,7 +45,7 @@ int main(){
         mid++;
     }else{
         swap(arr[mid],arr[high]);
-        high--;
+        high--;./
     }
    }
     for(int i : arr){
