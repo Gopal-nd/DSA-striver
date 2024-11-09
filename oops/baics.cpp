@@ -17,7 +17,7 @@ private:
     int speed;
 public:
   void setspeed(int s ){
-    if(s>=0) speed=s;
+//    if(s>=0) speed=s;
   }
   int getspeed(){
     return speed;
