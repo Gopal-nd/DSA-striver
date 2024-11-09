@@ -288,3 +288,119 @@ int main() {
 
 
 ```
+
+
+#### constructor overloading
+
+1. this is a type of polymorphism
+2. where there will be multiple constructor with different parameters and non parameters 
+3. constructor will get selected on the time of initaioezation of the object
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+private:
+    int width;
+    int height;
+
+public:
+    // Default constructor
+    Rectangle() {
+        width = 1;
+        height = 1;
+        cout << "Default Constructor called. Width: " << width << ", Height: " << height << endl;
+    }
+
+    // Constructor with one parameter (square)
+    Rectangle(int side) {
+        // u can also use the pointer
+        this->width = side;
+        // or this
+        height = side;
+        cout << "Single Parameter Constructor called. Width: " << width << ", Height: " << height << endl;
+    }
+
+    // Constructor with two parameters
+    Rectangle(int w, int h) {
+        width = w;
+        height = h;
+        cout << "Two Parameter Constructor called. Width: " << width << ", Height: " << height << endl;
+    }
+
+    // Method to calculate area
+    // 1. using the const will not allow function to chage the value and more safer
+    int area() const {
+        return width * height;
+    }
+};
+
+int main() {
+    // Using default constructor
+    Rectangle rect1;
+    cout << "Area of rect1: " << rect1.area() << endl << endl;
+
+    // Using constructor with one parameter (square)
+    Rectangle rect2(5);
+    cout << "Area of rect2: " << rect2.area() << endl << endl;
+
+    // Using constructor with two parameters
+    Rectangle rect3(4, 6);
+    cout << "Area of rect3: " << rect3.area() << endl;
+
+    return 0;
+}
+
+
+```
+
+#### copy Constructor 
+
+on the complie time memory allocation will be done using the stack
+
+but on run tain the memory will be stored in the HEAP eg: using new keyword `int new[5]`
+
+in this we cannot use the shallow copy constructor
+
+
+1. shallow copy constructor
+ copy of value from one to another
+2. Deep copy constructor
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Example {
+    int value;
+
+public:
+    // Parameterized constructor
+    Example(int v) : value(v) {}
+
+    // Copy constructor
+    Example( Example &obj) {
+        value = obj.value;
+        cout << "Copy constructor called!" << endl;
+    }
+
+    int getValue() const {
+        return value;
+    }
+};
+
+int main() {
+    Example obj1(42);       // Calls the parameterized constructor
+    Example obj2 = obj1;    // Calls the copy constructor
+
+    cout << "obj1 value: " << obj1.getValue() << endl;
+    cout << "obj2 value: " << obj2.getValue() << endl;
+
+    return 0;
+}
+
+
+```
+
+
