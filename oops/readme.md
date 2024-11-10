@@ -402,5 +402,300 @@ int main() {
 
 
 ```
+#### Polymorphisam 
 
+1. compile time 
+    1. constructor overloadding
+    2. function overloadding
+    3. operator overloadding
+
+eg:
+```cpp
+#include <iostream>
+using namespace std;
+
+class Calculator {
+    int a, b;
+
+public:
+    // 1. Constructor Overloading
+    Calculator() {
+        a = 0;
+        b = 0;
+        cout << "Default constructor called: a = " << a << ", b = " << b << endl;
+    }
+
+    Calculator(int x) {
+        a = x;
+        b = 0;
+        cout << "Single-parameter constructor called: a = " << a << ", b = " << b << endl;
+    }
+
+    Calculator(int x, int y) {
+        a = x;
+        b = y;
+        cout << "Two-parameter constructor called: a = " << a << ", b = " << b << endl;
+    }
+
+    // 2. Function Overloading
+    int add() {
+        return a + b;
+    }
+
+    int add(int x, int y) {
+        return x + y;
+    }
+
+    double add(double x, double y) {
+        return x + y;
+    }
+
+    // 3. Operator Overloading
+    Calculator operator + (const Calculator& obj) {
+        Calculator temp;
+        temp.a = this->a + obj.a;
+        temp.b = this->b + obj.b;
+        return temp;
+    }
+
+    void display() const {
+        cout << "a = " << a << ", b = " << b << endl;
+    }
+};
+
+int main() {
+    // Demonstrating Constructor Overloading
+    Calculator calc1;           // Calls default constructor
+    Calculator calc2(5);        // Calls single-parameter constructor
+    Calculator calc3(10, 20);   // Calls two-parameter constructor
+
+    // Demonstrating Function Overloading
+    cout << "\nFunction Overloading Examples:" << endl;
+    cout << "calc3.add(): " << calc3.add() << endl;                // Uses add() with no parameters
+    cout << "calc3.add(15, 25): " << calc3.add(15, 25) << endl;    // Uses add(int, int)
+    cout << "calc3.add(5.5, 3.3): " << calc3.add(5.5, 3.3) << endl; // Uses add(double, double)
+
+    // Demonstrating Operator Overloading
+    Calculator calc4 = calc2 + calc3;  // Calls overloaded + operator
+    cout << "\nOperator Overloading Result (calc2 + calc3):" << endl;
+    calc4.display();
+
+    return 0;
+}
+
+
+```
+
+
+2. runtime overlaoding
+   1. function overloading (used while inheritence andit is dynamic) 
+   2. vartial function (they are dynamic in nature)
+
+eg:
+
+```cpp
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Shape {
+public:
+    // Virtual function to be overridden in derived classes
+    virtual double area() const {
+        cout << "Base Shape area() called" << endl;
+        return 0;
+    }
+};
+
+class Circle : public Shape {
+    double radius;
+
+public:
+    Circle(double r) : radius(r) {}
+
+    // Overriding area() function for Circle
+    double area() const override {
+        cout << "Circle area() called" << endl;
+        return M_PI * radius * radius;
+    }
+};
+
+class Rectangle : public Shape {
+    double length, width;
+
+public:
+    Rectangle(double l, double w) : length(l), width(w) {}
+
+    // Overriding area() function for Rectangle
+    double area() const override {
+        cout << "Rectangle area() called" << endl;
+        return length * width;
+    }
+};
+
+int main() {
+    // Create objects of derived classes
+    Circle circle(5.0);
+    Rectangle rectangle(4.0, 6.0);
+
+    // Pointers to base class
+    Shape* shapePtr;
+
+    // Pointing to Circle
+    shapePtr = &circle;
+    cout << "Area of Circle: " << shapePtr->area() << endl;
+
+    // Pointing to Rectangle
+    shapePtr = &rectangle;
+    cout << "Area of Rectangle: " << shapePtr->area() << endl;
+
+    return 0;
+}
+
+
+```
+
+
+#### Abstraction 
+
+
+```cpp
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Abstract base class
+class Account {
+public:
+    virtual void deposit(double amount) = 0;  // Pure virtual function
+    virtual void withdraw(double amount) = 0; // Pure virtual function
+    virtual double getBalance() const = 0;    // Pure virtual function
+    virtual ~Account() = default;             // Virtual destructor
+};
+
+class SavingsAccount : public Account {
+private:
+    double balance;
+public:
+    SavingsAccount() : balance(0.0) {}
+
+    void deposit(double amount) override {
+        balance += amount;
+    }
+
+    void withdraw(double amount) override {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            cout << "Insufficient balance!" << endl;
+        }
+    }
+
+    double getBalance() const override {
+        return balance;
+    }
+};
+
+int main() {
+    Account* myAccount = new SavingsAccount();
+    myAccount->deposit(100.0);
+    cout << "Balance after deposit: $" << myAccount->getBalance() << endl;
+
+    myAccount->withdraw(50.0);
+    cout << "Balance after withdrawal: $" << myAccount->getBalance() << endl;
+
+    delete myAccount;
+    return 0;
+}
+
+
+```
+
+
+#### static 
+
+on declaration of static variable `static int num;` it will be still in menory untill the main function will ends
+
+1. Static Variable in a Function
+
+eg: 
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void counterFunction() {
+    static int count = 0;  // This variable is static, so it retains its value between calls
+    count++;
+    cout << "Function called " << count << " times" << endl;
+}
+
+int main() {
+    counterFunction();
+    counterFunction();
+    counterFunction();
+    return 0;
+}
+
+//output
+
+Function called 1 times
+Function called 2 times
+Function called 3 times
+
+```
+
+2. static member in a class
+```cpp
+
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    static int studentCount;  // Static member variable, shared among all objects
+public:
+    Student() {
+        studentCount++;
+    }
+
+    ~Student() {
+        studentCount--;
+    }
+
+    static int getStudentCount() {  // Static member function to access static variable
+        return studentCount;
+    }
+};
+
+// Initialize static member variable outside the class
+int Student::studentCount = 0;
+
+int main() {
+    cout << "Initial student count: " << Student::getStudentCount() << endl;
+
+    Student s1, s2;
+    cout << "Student count after creating two students: " << Student::getStudentCount() << endl;
+
+    {
+        Student s3;
+        cout << "Student count after creating another student: " << Student::getStudentCount() << endl;
+    }  // s3 goes out of scope here
+
+    cout << "Student count after one student goes out of scope: " << Student::getStudentCount() << endl;
+
+    return 0;
+}
+
+//output 
+
+Initial student count: 0
+Student count after creating two students: 2
+Student count after creating another student: 3
+Student count after one student goes out of scope: 2
+
+
+```
 
