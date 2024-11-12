@@ -12,7 +12,7 @@ int main(){
     // sort(v.begin(),v.end());
     // decenting oredr
 
-    // sort(a,a+n,greater<int>)
+    // sort(a,a+n,greater<int>())
 
     pair<int,int> a[]={{1,2},{2,1},{4,1}};
 
