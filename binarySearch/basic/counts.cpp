@@ -1,77 +1,117 @@
 #include<bits/stdc++.h>
 using namespace std;
-// int count(vector<int>& arr, int n, int x) {
-//     int cnt = 0;
-//     for (int i = 0; i < n; i++) {
-
-//         // counting the occurrences:
-//         if (arr[i] == x) cnt++;
-//     }
-//     return cnt;
-// }
 
 
-
-int firstOccurrence(vector<int> arr,int n,int k){
-    int low = 0,high = n-1;
-    int first =-1;
-
-    while(low<=high){
-        int mid = (low+high)/2;
-        if(arr[mid]==k){
-            first= mid;
-            high = mid-1;
-        }else if(arr[mid]<k){
-            low = mid+1;
-        }else{
-            high = mid-1;
-        }
+// using the linear search 
+pair<int,int> FLoccurence(vector<int> &arr,int target){
+  int n = arr.size();
+  int first =-1,last =-1;
+  for(int i=0;i<n;i++){
+    if(arr[i]==target){
+      if(first == -1){
+        first = i;
+      }
+      last = i;
     }
-    return first;
+  }  // time complexity is 0(n) space = o(1)
+  return {first,last};
 }
 
-int lastOccurrence(vector<int> &arr, int n, int k) {
-    int low = 0, high = n - 1;
-    int last = -1;
+// using the concept of lower bound and upper bound
+int lowerBound(vector<int> arr,int target ){
+  int n = arr.size();
+  int low =0;
+  int high = n-1;
+  int ans = n;
+  while(low<=high){
+    int mid = (low +high)/2;
+    if(arr[mid]>=target){
+      ans = mid;
+      high = mid-1;
+    }else  {
+     low = mid+1; 
+    }
+  }
+  return ans;
+}
 
+int upperBound(vector<int> arr,int target){
+  int n = arr.size();
+  int low =0;
+  int high = n-1;
+  int ans =n;
+  while (low<=high) {
+   int mid = (low+high)/2;
+    if(arr[mid]>target){
+      ans = mid;
+      high = mid-1;
+    }else {
+      low = mid+1;
+    }
+  }
+  return ans;
+}
+pair<int,int> fl(vector<int> arr,int target){
+  int first = lowerBound(arr,target);
+  int last = upperBound(arr,target)-1;
+  if(first == arr.size() || arr[first] != target) {
+        return {-1, -1};
+    }
+    return {first, last};}
+
+
+int first(vector<int> arr,int target){
+  int low = 0;
+  int n = arr.size();
+  int high = n-1;
+  int ans = -1;  
+  while (low<=high) {
+    int mid = (low+high)/2;
+    if(arr[mid]==target){
+      ans = mid;
+      high = mid-1;
+    }else if (arr[mid]>target) {
+      high = mid -1;
+    }else {
+      low = mid+1;
+    }
+  }
+  return ans;
+}
+
+int last(vector<int> arr, int target) {
+    int low = 0;
+    int n = arr.size();
+    int high = n - 1;
+    int ans = -1;
     while (low <= high) {
-        int mid = (low + high) / 2;
-        // maybe an answer
-        if (arr[mid] == k) {
-            last = mid;
-            //look for larger index on the right
-            low = mid + 1;
-        }
-        else if (arr[mid] < k) {
-            low = mid + 1; // look on the right
-        }
-        else {
-            high = mid - 1; // look on the left
+        int mid = low + (high - low) / 2; // Prevent overflow
+        if (arr[mid] == target) {
+            ans = mid;  // Update potential answer
+            low = mid + 1; // Move to the right to find the last occurrence
+        } else if (arr[mid] > target) {
+            high = mid - 1; // Search in the left half
+        } else {
+            low = mid + 1; // Search in the right half
         }
     }
-    return last;
+    return ans;
 }
+int main(){
+  vector<int> arr = {1,2,3,3,3,4,5,6,7};
+  pair<int,int> ans,ans1,ans2;
+  
+  int f = first(arr,6);
+  int l = last(arr,6);
+  if(f==-1 ){
+    cout << 0;
+  }else{
+  cout << l-f+1<< endl<< endl;
+  }
+  ans = FLoccurence(arr,0);
+  ans1 = fl(arr,1);
+  cout << ans1.first<<"  "<<ans1.second<< endl;
+  cout << ans.first<< "  "<<ans.second;
 
-pair<int, int> firstAndLastPosition(vector<int>& arr, int n, int k) {
-    int first = firstOccurrence(arr, n, k);
-    if (first == -1) return { -1, -1};
-    int last = lastOccurrence(arr, n, k);
-    return {first, last};
-}
-
-int count(vector<int>& arr, int n, int x) {
-    pair<int, int> ans = firstAndLastPosition(arr, n, x);
-    if (ans.first == -1) return 0;
-    return (ans.second - ans.first + 1);
-}
-
-
-int main()
-{
-    vector<int> arr =  {2, 4, 6, 8, 8, 8, 11, 13};
-    int n = 8, x = 8;
-    int ans = count(arr, n, x);
-    cout << "The number of occurrences is: "
-         << ans << "\n";
-    return 0;
+  return 0;
 }
