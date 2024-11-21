@@ -13,22 +13,25 @@ public:
   }
 };
 
-// Function to convert an array to a linked list
-Node* convertArr2ll(int arr[], int n) {
-  if (n == 0) return nullptr; // Handle empty array case
+
+//cover the linkedlist from the array
+
+Node* convertArr2ll(int arr[], int n){
+  if(n==0) return nullptr;
   
-  Node* head = new Node(arr[0]); // Create the head node
+  Node* head = new Node(arr[0]);
   Node* mover = head;
 
-  for (int i = 1; i < n; i++) {
-    Node* temp = new Node(arr[i]); // Create a new node
-    mover->next = temp;            // Link the new node
-    mover = temp;                  // Move to the next node
+  for(int i=1;i<n;i++){
+    Node* temp = new Node(arr[i]);
+    mover->next = temp;
+    mover = temp;
   }
 
-  return head;
-}
 
+  return head;   // which is pointer
+}
+// Function to convert an array to a linked list
 int len(Node* head){
   int cnt=0;
   Node* temp = head;
@@ -55,12 +58,14 @@ int main() {
 
   // Print the linked list
   cout << "Linked list: ";
-  Node* current = head;
-  while (current != nullptr) {
-    cout << current->data << " ";
+  Node* current =head;
+  while(current->next!=nullptr){
+    cout << current->data<< " ";
     current = current->next;
   }
-int llen = len(head);
+
+
+  int llen = len(head);
   cout << llen;
   return 0;
 }

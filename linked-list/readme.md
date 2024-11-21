@@ -21,6 +21,35 @@ reallife browser
 
 ## structs and classes
 
+creating the class for thhis
+
+```cpp
+
+class Node{
+public:  // access modidier
+    int data ;
+    Node* next;
+
+    // constructor
+    Node(int data1, Node* next1=nullptr){
+    data = data1;
+    next = next1;
+    }
+
+    Node(int data1){
+        data = data1;
+        next= nullptr;
+    }
+};
+
+int main(){
+    vector<int> arr={2,5,8,7};
+    Node* y = new Node(arr[0]);   // new keyword will return the location of the object
+    cout << y<< "\n"; // return the memory value
+    cout << y->data<<"\n";
+}
+```
+
 `int n =2`
 `int* y = &x`
 `cout << y`
