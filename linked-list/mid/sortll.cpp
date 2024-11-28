@@ -55,7 +55,7 @@ Node* mergeTwoSortedLinkedLists(Node* list1, Node* list2) {
     // If any list still has remaining
     // elements, append them to the merged list
     if (list1 != nullptr) {
-        temp->next = list1;
+      temp->next = list1;
     } else {
         temp->next = list2;
     }
@@ -73,7 +73,7 @@ Node* findMiddle(Node* head){
     }
 
     // Initializing slow and fast pointers
-    Node* slow = head;
+    Node* slow = head;a
     Node* fast = head->next;
 
     // Move the fast pointer twice as fast as the slow pointer
