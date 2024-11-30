@@ -11,7 +11,7 @@ int romanToInt(string s) {
     int total = 0;
 
     for (int i = 0; i < s.length(); ++i) {
-        if (i + 1 < s.length() && roman[s[i]] < roman[s[i + 1]]) {
+        if (s.length() && roman[s[i]] < roman[s[i + 1]]) {
             total -= roman[s[i]];
         } else {
             total += roman[s[i]];
