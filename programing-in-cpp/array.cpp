@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
-using namespace std;
 
+using namespace std;
 
 int main(){
     int a[5];  //sould be the same data type
@@ -13,8 +13,6 @@ int main(){
 
     if(b[2][4] ==1983609917) cout <<"dada"; 
     cout <<"garbage value "<< b[0][0];
-
-
 
   return 0;
 }
