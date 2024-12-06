@@ -75,7 +75,7 @@ std::cout << endl;
   int c=0;
 
   n = n&n-1;
-  cout << n;
+  cout << n<<" jhwufwe";
 cout << endl;
 
   int r = 13;
