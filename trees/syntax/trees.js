@@ -27,7 +27,7 @@ function inorder(root) {
   }
 }
 
-// post order traversal (right -> left -> root)
+// post order traversal (left ->  right -> root)
 function postorder(root) {
   if (root) {
     postorder(root.right);
@@ -42,7 +42,8 @@ function postorder(root) {
 function levelOrder(root) {
   if (!root) return;
 
-  const queue = [root];
+  const queue = [];
+  queue.push(root)
 
   while (queue.length > 0) {
     const node = queue.shift();
