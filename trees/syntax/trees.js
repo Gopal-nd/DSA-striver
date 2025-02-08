@@ -43,7 +43,7 @@ function levelOrder(root) {
   if (!root) return;
 
   const queue = [];
-  queue.push(root)
+  queue.push(root);
 
   while (queue.length > 0) {
     const node = queue.shift();

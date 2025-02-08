@@ -1,4 +1,3 @@
-let text = "super man is superhero"
+let text = "super man is superhero";
 
-
-text.match("PM")
+text.match("PM");

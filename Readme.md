@@ -4,13 +4,14 @@
 
 #### how set up the workspace and makesure everything is uptodatae
 
-` g++ --version ` to check the version and sussessfull installation of the compiler
+`g++ --version` to check the version and sussessfull installation of the
+compiler
 
-`cd workingFolder ` before u run the program
+`cd workingFolder` before u run the program
 
 `g++ filename.cpp` to compile the program
 
-it will provide **a.exe** file to execute 
+it will provide **a.exe** file to execute
 
 `./a.exe` to run the program
 
@@ -50,10 +51,10 @@ int main(){
 #### notes for the conceptual concepts
 1. dry run the problems in detail
 2. solve hard problems with dry run
-3. write key notes 
+3. write key notes
 
-#### Problem solving 
-1. approuch 
+#### Problem solving
+1. approuch
 2. corner cases
 3. upload code
 
@@ -67,7 +68,6 @@ int main(){
 `settings -> snippets -> cpp.json`
 
 ```json
-
 "Basic cpp started code": {
     "prefix": "cpp",
     "body": [
@@ -83,10 +83,8 @@ int main(){
     ],
     "description": "basic cpp starter code"
 }
-
-
 ```
-type ***cpp*** to run this code 
+
+type _**cpp**_ to run this code
 
 ---
-

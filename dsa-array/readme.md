@@ -4,13 +4,11 @@
 
 if don't declare inside value there will be garbage values will be stored
 
-max size that can be declared is 
+max size that can be declared is
 
 `int main(){ int arr[size]={0}; # it can be up to 10^6 numbers}`
 
-
 outside main it is 10^7
 
-in memory it will be accessing a location in memory, but the next elment will store in the next memory of arry contuning the array
-
-
+in memory it will be accessing a location in memory, but the next elment will
+store in the next memory of arry contuning the array

@@ -1,19 +1,15 @@
 ### classes and objects
 
-* objects are entites( an entity is an independent concept that has its own 
-properties and behaviors. It represents a real-world thing, a person, a place, an idea, 
-etc. that can be modeled using code.)
+- objects are entites( an entity is an independent concept that has its own
+  properties and behaviors. It represents a real-world thing, a person, a place,
+  an idea, etc. that can be modeled using code.)
 
-* class : class is like a blueprint  of the entities
-eg:
-scheam of a person is a classs
-and actual persion with the proerties is objects
+- class : class is like a blueprint of the entities eg: scheam of a person is a
+  classs and actual persion with the proerties is objects
 
 eg:
 
 ```cpp
-
-
 #include<iostream>
 #include<string>
 using namespace std;
@@ -58,8 +54,9 @@ int main(){
 ```
 
 #### Access Modifiers
-by default is private in cpp
-there are three types :
+
+by default is private in cpp there are three types :
+
 1. private
 2. public
 3. protected
@@ -71,16 +68,14 @@ there are three types :
 3. inheritence
 4. polymorphism
 
-
 ### Encapsulations
-it is the wrapping  up the data and members function in asingle unit called class.
 
-1. helps in the data hiding : Public and private 
-eg:
+it is the wrapping up the data and members function in asingle unit called
+class.
+
+1. helps in the data hiding : Public and private eg:
 
 ```cpp
-
-
 #include<iostream>
 #include<string>
 using namespace std;
@@ -127,23 +122,22 @@ int main(){
 
 ### Constructor
 
-special method invoked automitaicaly at the time of object creation 
+special method invoked automitaicaly at the time of object creation
 
 1. used for the initailesations
 2. same name as class
 3. only called once , at the objects creation
 
-
 types of the costructors
+
 1. Default Constructors
 2. Parameteriaed constructors
 3. copy constructors
 4. move Constructors
 
-#### Default Constructor 
+#### Default Constructor
 
 ```cpp
-
 #include<iostream>
 using namespace std;
 
@@ -164,10 +158,10 @@ int main(){
     return 0;
 }
 ```
+
 #### Parametriazedconstructor
 
 ```cpp
-
 #include <iostream>
 using namespace std;
 
@@ -191,11 +185,9 @@ int main() {
 
     return 0;
 }
-
-
 ```
 
-#### copy Constructor 
+#### copy Constructor
 
 ```cpp
 #include <iostream>
@@ -226,17 +218,13 @@ int main() {
 
     return 0;
 }
-
-
 ```
-
 
 #### constructor Initalization
 
 used to initailize the data at the creation time itself
 
 ```cpp
-
 #include<iostream>
 using namespace std;
 
@@ -257,7 +245,7 @@ int main(){
 }
 ```
 
-#### Destructor 
+#### Destructor
 
 1. create and delete after task completed
 
@@ -285,15 +273,13 @@ int main() {
     Person p1("John", 25);  // Constructor is called here
     return 0;                // Destructor is called here when p1 goes out of scope
 }
-
-
 ```
-
 
 #### constructor overloading
 
 1. this is a type of polymorphism
-2. where there will be multiple constructor with different parameters and non parameters 
+2. where there will be multiple constructor with different parameters and non
+   parameters
 3. constructor will get selected on the time of initaioezation of the object
 
 ```cpp
@@ -351,21 +337,18 @@ int main() {
 
     return 0;
 }
-
-
 ```
 
-#### copy Constructor 
+#### copy Constructor
 
 on the complie time memory allocation will be done using the stack
 
-but on run tain the memory will be stored in the HEAP eg: using new keyword `int new[5]`
+but on run tain the memory will be stored in the HEAP eg: using new keyword
+`int new[5]`
 
 in this we cannot use the shallow copy constructor
 
-
-1. shallow copy constructor
- copy of value from one to another
+1. shallow copy constructor copy of value from one to another
 2. Deep copy constructor
 
 ```cpp
@@ -399,17 +382,17 @@ int main() {
 
     return 0;
 }
-
-
 ```
-#### Polymorphisam 
 
-1. compile time 
-    1. constructor overloadding
-    2. function overloadding
-    3. operator overloadding
+#### Polymorphisam
+
+1. compile time
+   1. constructor overloadding
+   2. function overloadding
+   3. operator overloadding
 
 eg:
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -482,19 +465,15 @@ int main() {
 
     return 0;
 }
-
-
 ```
 
-
 2. runtime overlaoding
-   1. function overloading (used while inheritence andit is dynamic) 
+   1. function overloading (used while inheritence andit is dynamic)
    2. vartial function (they are dynamic in nature)
 
 eg:
 
 ```cpp
-
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -552,16 +531,11 @@ int main() {
 
     return 0;
 }
-
-
 ```
 
-
-#### Abstraction 
-
+#### Abstraction
 
 ```cpp
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -609,18 +583,16 @@ int main() {
     delete myAccount;
     return 0;
 }
-
-
 ```
 
+#### static
 
-#### static 
-
-on declaration of static variable `static int num;` it will be still in menory untill the main function will ends
+on declaration of static variable `static int num;` it will be still in menory
+untill the main function will ends
 
 1. Static Variable in a Function
 
-eg: 
+eg:
 
 ```cpp
 #include <iostream>
@@ -644,12 +616,11 @@ int main() {
 Function called 1 times
 Function called 2 times
 Function called 3 times
-
 ```
 
 2. static member in a class
-```cpp
 
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -695,7 +666,4 @@ Initial student count: 0
 Student count after creating two students: 2
 Student count after creating another student: 3
 Student count after one student goes out of scope: 2
-
-
 ```
-
