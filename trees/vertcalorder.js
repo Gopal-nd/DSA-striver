@@ -1,45 +1,111 @@
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {number[][]}
- */
-var verticalOrder = function(root) {
-    if (!root) return [];
+                            
+// Node structure for the binary tree
+class Node {
+    constructor(val) {
+        this.data = val;
+        this.left = null;
+        this.right = null;
+    }
+}
 
-    // Map to store column index and corresponding nodes
-    const columnMap = new Map();
-    const queue = [[root, 0]]; // [Node, Column Index]
-
-    let minCol = 0, maxCol = 0;
-
-    while (queue.length > 0) {
-        const [node, col] = queue.shift(); // Get node and column index
-
-        if (!columnMap.has(col)) {
-            columnMap.set(col, []);
+class Solution {
+  
+    findVertical(root) {
+   
+        const nodes = new Map();
+        
+    
+        const todo = [];
+ 
+        todo.push([root, [0, 0]]);
+        
+        while (todo.length > 0) {
+        
+            const [temp, [x, y]] = todo.shift();
+            
+          
+            if (!nodes.has(x)) {
+                nodes.set(x, new Map());
+                console.log(nodes)
+            }
+            if (!nodes.get(x).has(y)) {
+                nodes.get(x).set(y, new Set());
+                console.log(nodes)
+            }
+            nodes.get(x).get(y).add(temp.data);
+            
+     
+            if (temp.left) {
+                todo.push([
+                    temp.left,
+                    [
+                        // Move left in
+                        // terms of vertical
+                        x - 1,
+                        // Move down in
+                        // terms of level
+                        y + 1
+                    ]
+                ]);
+            }
+            
+            // Process right child
+            if (temp.right) {
+                todo.push([
+                    temp.right,
+                    [
+                        // Move right in
+                        // terms of vertical
+                        x + 1,
+                        // Move down in
+                        // terms of level
+                        y + 1
+                    ]
+                ]);
+            }
         }
-        columnMap.get(col).push(node.val);
-
-        minCol = Math.min(minCol, col);
-        maxCol = Math.max(maxCol, col);
-
-        if (node.left) queue.push([node.left, col - 1]);  // Left child → Col - 1
-        if (node.right) queue.push([node.right, col + 1]); // Right child → Col + 1
+        
+      
+        const ans = [];
+        for (const [key, value] of nodes) {
+            const col = [];
+            for (const [subKey, subValue] of value) {
+         
+                col.push(...subValue);
+            }
+         
+            ans.push(col);
+        }
+        return ans;
     }
+}
 
-    // Collect results in sorted column order
-    const result = [];
-    for (let i = minCol; i <= maxCol; i++) {
-        result.push(columnMap.get(i));
+
+function printResult(result) {
+    for (const level of result) {
+        console.log(level.join(" "));
     }
+    console.log("");
+}
 
-    return result;
-};
+// Creating a sample binary tree
+const root = new Node(1);
+root.left = new Node(2);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
 
+root.right = new Node(3);
+root.right.right = new Node(6);
+
+
+const solution = new Solution();
+
+// Get the Vertical traversal
+const verticalTraversal = solution.findVertical(root);
+
+// Print the result
+console.log("Vertical Traversal: ");
+printResult(verticalTraversal);
+
+                            
+                        
